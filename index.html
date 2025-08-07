@@ -4,401 +4,518 @@
 
 <!DOCTYPE html>
 <html lang="en-US">
-<!-- English Language -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Display -->
-        <title>
-            Beware! Adware
-        </title>
+    <title>Beware! Adware - Consumer Privacy in the Digital Age</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00ff88;
+            --secondary-color: #ff6b6b;
+            --accent-color: #4ecdc4;
+            --text-light: #e8f4f8;
+            --text-dark: #2c3e50;
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, #120458 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #421243 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #030712 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(-20px) translateY(-10px); }
+            50% { transform: translateX(20px) translateY(10px); }
+            75% { transform: translateX(-10px) translateY(20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6)); }
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .author-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-header .section-number {
+            display: inline-block;
+            background: var(--bg-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Images */
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Warning Cards */
+        .warning-card {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            border: none;
+        }
+
+        .success-card {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+        }
+
+        /* Note styling */
+        .note {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .sources {
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        .sources a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
     </head>
-<body style="background-color: #000000; text-align: center; ;font-family:'Courier New', Courier, monospace">
-    <h1>
-        <font color="Green">
-            Beware! Adware
-        </font>
-    </h1>
-    <h6>
-        <font color="#BDB1D7">
-            <li><a href="#Sources">Sources Cited</a></li>
-        </font>
-    </h6>
-    <h6>
-        <font color="lightgreen">
-            Author - Zachary Amith <br> (z8chary) <br> University of California Merced: CSE 005 <br> 2023
-        </font>
-    </h6>
-    <h5>
-        <font color="#E0B0FF">
-            Jump To:
-        </font>
-    </h5>
-    <h6>
-        <font color="#BDB5D5">
-            <li><a href="#Harmless-Adware">Harmless Adware</a></li>
-        </font>
-    </h6>
-    <h6>
-        <font color="#BDB5D5">
-            <li><a href="#HarmfulAdware">Harmful Adware</a></li>
-        </font>
-    </h6>
-    <h6>
-        <font color="#BDB5D5">
-            <li><a href="#Consumer-Privacy">Adware In The Contaxt of Consumer Privacy</a></li>
-        </font>
-    </h6>
-    <img src="computer hacker bw.png" alt="Computer Hacker"
-    width="600"
-    height="auto">
-    <!-- https://www.aura.com/learn/how-do-hackers-get-into-your-computer -->
-    <h2>
-        <font color="white">
-            Consumer Privacy and Adware in the Digital Age <br> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        </font>
-    </h2>
-    <h4>
-        <font color="white">
-            In our increasingly digitized world, where technology has become an 
-            integral part of our daily lives, the conversation around consumer 
-            privacy has taken center stage. As we navigate the vast digital landscape, 
-            our personal information is constantly at risk of being exposed, misused, 
-            or exploited. One of the most pressing concerns in this realm is the 
-            insidious presence of adware, a category of software that often operates 
-            in the shadows, silently collecting data about our online behaviors and 
-            serving targeted advertisements. This intrusion into our digital lives 
-            raises critical questions about privacy, security, and the balance between 
-            the benefits of personalized content and the protection of our personal data. 
-            In this exploration of consumer privacy and adware, we'll delve into the 
-            complex web of issues, implications, and solutions surrounding these topics, 
-            shedding light on the ongoing battle to safeguard our privacy in the digital 
-            age.
-        </font>
-    </h4>
-    <h1 id="Harmless-Adware">
-        <font color="limegreen">
-            Harmless Adware
-        </font>
-    </h1>
-    <p>
-        <font color="grey">
-            <b>
-                <i>
-                    Note:
-                </i>
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <small>
-                Perceptions of "harmless" adware widely differ among users 
-                due to varying tolerances for ad intrusiveness, concerns about 
-                privacy, experiences with device performance, ethical 
-                considerations regarding data collection, differing expectations 
-                of an ad-free experience, and even cultural or regional influences. 
-                What one user may find tolerable or unobtrusive in terms of 
-                advertisements within an app, another might consider highly 
-                disruptive or invasive, especially regarding how personal data is 
-                collected and used for targeted advertising. Ethical objections, 
-                performance impacts, and individual expectations all contribute 
-                to these differing perceptions, emphasizing the subjectivity of 
-                what users consider to be harmless adware.
-            </small>
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            1_Ethical Advertising Practices
-        </font>
-    </h2>
-    <img src="BalanceScale.png" alt="Balance Scale"
-    width="150"
-    height="auto">
-    <p>
-        <font color="white">
-            Ethical advertising in adware is crucial 
-            for maintaining user trust, respecting privacy, and 
-            upholding the integrity of digital advertising. It ensures 
-            that advertisements are non-intrusive, relevant, and 
-            clearly distinguished from core software functions. 
-            Ethical practices prioritize user privacy, 
-            comply with regulations, sustain brand reputation, 
-            foster fair competition, and fulfill social responsibilities. 
-            By adhering to ethical standards, adware can contribute to a 
-            transparent, sustainable, and trustworthy digital advertising landscape.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Transparency and user consent form the cornerstone of 
-            ethical advertising in adware. They involve clear 
-            disclosure of ads within software, distinguishing them 
-            from core content, and obtaining explicit user consent 
-            for personalized ads or data collection. Respecting user 
-            privacy preferences, providing control over advertising 
-            settings, and transparently communicating data usage are 
-            crucial. These practices build trust, empower users, and 
-            ensure that adware operates ethically, fostering a 
-            respectful and transparent advertising environment.
-        </font>
-    </p>
-    <img src="digital handshake.jpg" alt="Digital Handshake">
-    <!-- https://thenounproject.com/icon/digital-handshake-1498350/ -->
-    <h2>
-        <font color="Green">
-            2_Case Studies on Harmless Adware
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-            <small>
-            Several companies and software have implemented ad-supported models 
-            in ways that prioritize user experience, maintain ethical standards, 
-            and ensure harmless adware. Here are some examples:
-            </small>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <b>Mozilla Firefox</b>
-        </font>
-    </p>
-    <img src="firefoxbw.jpg" alt="Firefox Logo"
-    width="90"
-    height="auto">
-    <p>
-        <font color="white">
-            Mozilla has employed a non-intrusive ad-supported model within its 
-            Firefox browser. They display sponsored content or advertisements within 
-            new tabs, ensuring that these ads don't interfere with the browsing 
-            experience. Users have control over these ads and can easily dismiss or 
-            customize them.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <b>BitTorrent</b>
-        </font>
-    </p>
-    <img src="bittorrent-bttold-logo.png" alt="BitTorrent Logo"
-    width="100"
-    height="auto">
-    <p>
-        <font color="white">
-            BitTorrent, the peer-to-peer file sharing protocol, 
-            offers a client known as µTorrent that has a free version 
-            supported by non-intrusive ads. The ads are displayed discreetly 
-            within the software and don't impede the functionality of the client, 
-            allowing users to download and share files without interruptions.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <b>Skype</b>
-        </font>
-    </p>
-    <img src="skypebw.png" alt="Skype Logo"
-    width="100"
-    height="auto">
-    <p>
-        <font color="white">
-            Skype, the communication platform, has incorporated ads in its 
-            free version. The ads are displayed in a way that doesn't disrupt 
-            conversations or calls. Users have the option to upgrade to a premium, 
-            ad-free version if they prefer an ad-free experience.
-        </font>
-    </p>
-    <p>
-        <font color="grey">
-            <i>
-                <small>
-                    These companies and software have successfull implemented ad-supported
-                    models by ensuring that the ads are displayed in a non-intrusive 
-                    manner, allowing users to continue using the software and service
-                    without significant interruptions. They respect user experience, provide
-                    options to users to upgrade to ad-free versions, and maintain ethical
-                    practices in their advertising strategies.
-                </small>
-            </i>
-        </font>
-    </p>
-    <img src="freewater.png" alt="Water Bottle company using advertisements to offset the cost of manufacturing the bottle and the water"
-    width="200"
-    height="auto">
-    <p>
-        <font color="silver">
-            <i>
-                <small>
-                    FreeWater is a company that is ushering a 
-                    paradigm shift in how advertisements are used. In this case, 
-                    advertisements are used to offset the cost of the
-                    water and manufacturing of the bottle. 
-                </small>
-            </i>
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            3_Harmless Adware in the Mobile Space
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-            <small>
-                While adware can be annoying or unwanted, some ad-supported apps 
-                in the mobile space may be considered relatively harmless as they 
-                adhere to ethical advertising practices and do not cause 
-                significant harm to the user or their device. Here are some 
-                examples:
-            </small>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <b>
-                Free Versions of Apps
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Many free versions of mobile apps contain ad-supported models. 
-            These ads are often displayed within the app's interface but don't 
-            cause harm to the device or the user's personal data.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <b>
-                Games With Advertisements
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Several mobile games display ads between levels or during 
-            natural breaks in gameplay. These ads usually don't interfere 
-            with the game's functionality and are a way for developers to 
-            monetize their free-to-play games.
-        </font>
-    </p>
-    <img src="mobile-game-advertisements-removebg-preview.png" alt="Water Bottle company using advertisements to offset the cost of manufacturing the bottle and the water"
-    width="400"
-    height="auto">
-    <p>
-        <font color="white">
-            <b>
-                Opt-In Advertisements
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Some apps offer users the choice to view ads voluntarily in 
-            exchange for certain benefits, such as in-app currency, premium 
-            features, or rewards. Users have the option to engage with these 
-            ads and are not forced to interact with them.
-        </font>
-    </p>
-    <h1 id="HarmfulAdware">
-        <font color="limegreen">
-            Harmful Adware 
-        </font>
-    </h1>
-    <p>
-        <font color="grey">
-            <b>
-                <i>
-                    Note:
-                </i>
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <small>
-                Harmful adware poses significant risks to individuals and 
-                organizations, and understanding how to recognize, prevent, 
-                and respond to such threats is essential for maintaining online 
-                security and privacy.
-            </small>
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            1_Harmful Adware in the Mobile Space
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-            Harmful adware in the mobile space presents significant issues, notably 
-            impacting battery life, device performance, and posing risks when embedded 
-            within legitimate applications. Firstly, such adware often runs background 
-            processes that consume considerable system resources, leading to rapid 
-            battery drain and a notable decrease in device performance. These processes 
-            continuously display ads, track user behavior, or perform other intrusive 
-            actions without user consent, significantly affecting the overall user experience.
-            <br> 
-            <br>
-            <br>
-            <br>
-            <img src="Your-Iphone-Has-Been-Hacked.png" alt="Your phone has been hacked!"
-            width="400"
-            height="auto">            
-            <br>
-            <p>
-                <small>
-                    <font color="grey">
-                        A common advertisement for individuals clicking on unwanted ads
-                        or accessing websites that allow malicioius pop-up advertisements.
-                        This advertisement is BOGUS! 
-                    </font>
-                </small>
-            </p>
-            <br>
-            Moreover, one prevalent concern is the infiltration of harmful adware into seemingly 
-            legitimate applications. This occurs when developers unknowingly or maliciously 
-            integrate adware into their apps. While the core functionality of these apps appears genuine, 
-            the embedded adware operates surreptitiously in the background, displaying invasive ads, collecting 
-            sensitive user data without consent, or even 
-            redirecting users to malicious websites.
-            <br>
-            <br>
-            These issues pose severe threats to users' privacy and security. Adware 
-            embedded within legitimate apps not only compromises user experience but 
-            also exposes users to potential malware, phishing attempts, or data breaches. 
-            Additionally, these adware-infected apps often bypass initial security checks 
-            on app stores, making it challenging for users to differentiate 
-            between safe and compromised applications.
-            <br>
-            <br>
-            The impact of harmful adware on mobile devices goes 
-            beyond mere annoyance or inconvenience. It jeopardizes user privacy, 
-            compromises device performance, drains battery life, and exposes users to 
-            potential security risks, highlighting the necessity for robust security 
-            measures, regular app updates, and user vigilance to combat these threats 
-            effectively.
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            2_Financial Motivations
-        </font>
-    </h2>
-    <img src="Nigerian Prince Advertisement and Email Scam.jpeg" alt="Nigerian Prince Email scam"
-    width="400"
-    height="auto">   
-    <p>
-        <small>
-            <font color="grey">
-                A popular email scam during the early days of computing.
-                Thousands are still affected by this. Similar harmful advertisements
-                are structured around the same argument.
-            </font>
-        </small>
-    </p>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#hero" class="logo">Beware! Adware</a>
+                <ul class="nav-links">
+                    <li><a href="#harmless">Harmless Adware</a></li>
+                    <li><a href="#harmful">Harmful Adware</a></li>
+                    <li><a href="#privacy">Consumer Privacy</a></li>
+                    <li><a href="#sources">Sources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Beware! Adware</h1>
+                <p class="subtitle">Consumer Privacy and Adware in the Digital Age</p>
+                
+                <div class="image-container">
+                    <img src="computer hacker bw.png" alt="Computer Hacker" style="max-width: 600px;">
+                    <div class="image-caption">Digital security threats in our interconnected world</div>
+                </div>
+
+                <div class="author-info">
+                    <p><strong>Author:</strong> Zachary Amith (z8chary)</p>
+                    <p>University of California Merced: CSE 005 | 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="card">
+                <p>In our increasingly digitized world, where technology has become an integral part of our daily lives, the conversation around consumer privacy has taken center stage. As we navigate the vast digital landscape, our personal information is constantly at risk of being exposed, misused, or exploited.</p>
+                
+                <p>One of the most pressing concerns in this realm is the insidious presence of adware, a category of software that often operates in the shadows, silently collecting data about our online behaviors and serving targeted advertisements. This intrusion into our digital lives raises critical questions about privacy, security, and the balance between the benefits of personalized content and the protection of our personal data.</p>
+                
+                <p>In this exploration of consumer privacy and adware, we'll delve into the complex web of issues, implications, and solutions surrounding these topics, shedding light on the ongoing battle to safeguard our privacy in the digital age.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Harmless Adware Section -->
+    <section id="harmless" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Section 01</div>
+                <h2>Harmless Adware</h2>
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> Perceptions of "harmless" adware widely differ among users due to varying tolerances for ad intrusiveness, concerns about privacy, experiences with device performance, ethical considerations regarding data collection, differing expectations of an ad-free experience, and even cultural or regional influences. What one user may find tolerable or unobtrusive in terms of advertisements within an app, another might consider highly disruptive or invasive, especially regarding how personal data is collected and used for targeted advertising.
+            </div>
+            <div class="card success-card">
+                <h3>Ethical Advertising Practices</h3>
+                
+                <div class="image-container">
+                    <img src="BalanceScale.png" alt="Balance Scale" style="max-width: 150px;">
+                </div>
+                
+                <p>Ethical advertising in adware is crucial for maintaining user trust, respecting privacy, and upholding the integrity of digital advertising. It ensures that advertisements are non-intrusive, relevant, and clearly distinguished from core software functions.</p>
+                
+                <p>Ethical practices prioritize user privacy, comply with regulations, sustain brand reputation, foster fair competition, and fulfill social responsibilities. By adhering to ethical standards, adware can contribute to a transparent, sustainable, and trustworthy digital advertising landscape.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: white; margin-bottom: 1rem;">Transparency & User Consent</h4>
+                    <p>Transparency and user consent form the cornerstone of ethical advertising in adware. They involve clear disclosure of ads within software, distinguishing them from core content, and obtaining explicit user consent for personalized ads or data collection. Respecting user privacy preferences, providing control over advertising settings, and transparently communicating data usage are crucial.</p>
+                </div>
+                
+                <div class="image-container">
+                    <img src="digital handshake.jpg" alt="Digital Handshake" style="max-width: 300px;">
+                    <div class="image-caption">Building trust through transparent practices</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Case Studies on Harmless Adware</h3>
+                <p>Several companies and software have implemented ad-supported models in ways that prioritize user experience, maintain ethical standards, and ensure harmless adware:</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="firefoxbw.jpg" alt="Firefox Logo" style="max-width: 90px;">
+                        </div>
+                        <h4 style="color: var(--primary-color);">Mozilla Firefox</h4>
+                        <p>Mozilla has employed a non-intrusive ad-supported model within its Firefox browser. They display sponsored content or advertisements within new tabs, ensuring that these ads don't interfere with the browsing experience. Users have control over these ads and can easily dismiss or customize them.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="bittorrent-bttold-logo.png" alt="BitTorrent Logo" style="max-width: 100px;">
+                        </div>
+                        <h4 style="color: var(--primary-color);">BitTorrent</h4>
+                        <p>BitTorrent, the peer-to-peer file sharing protocol, offers a client known as µTorrent that has a free version supported by non-intrusive ads. The ads are displayed discreetly within the software and don't impede the functionality of the client, allowing users to download and share files without interruptions.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="skypebw.png" alt="Skype Logo" style="max-width: 100px;">
+                        </div>
+                        <h4 style="color: var(--primary-color);">Skype</h4>
+                        <p>Skype, the communication platform, has incorporated ads in its free version. The ads are displayed in a way that doesn't disrupt conversations or calls. Users have the option to upgrade to a premium, ad-free version if they prefer an ad-free experience.</p>
+                    </div>
+                </div>
+                
+                <div class="note" style="margin-top: 2rem;">
+                    <em>These companies and software have successfully implemented ad-supported models by ensuring that the ads are displayed in a non-intrusive manner, allowing users to continue using the software and service without significant interruptions. They respect user experience, provide options to users to upgrade to ad-free versions, and maintain ethical practices in their advertising strategies.</em>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-container">
+                    <img src="freewater.png" alt="FreeWater - Advertisements offset manufacturing costs" style="max-width: 200px;">
+                    <div class="image-caption">FreeWater is ushering a paradigm shift in how advertisements are used. In this case, advertisements are used to offset the cost of the water and manufacturing of the bottle.</div>
+                </div>
+            </div>
+
+            <div class="card success-card">
+                <h3>Harmless Adware in the Mobile Space</h3>
+                <p>While adware can be annoying or unwanted, some ad-supported apps in the mobile space may be considered relatively harmless as they adhere to ethical advertising practices and do not cause significant harm to the user or their device.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: var(--primary-color);">Free Versions of Apps</h4>
+                        <p>Many free versions of mobile apps contain ad-supported models. These ads are often displayed within the app's interface but don't cause harm to the device or the user's personal data.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--primary-color);">Games With Advertisements</h4>
+                        <p>Several mobile games display ads between levels or during natural breaks in gameplay. These ads usually don't interfere with the game's functionality and are a way for developers to monetize their free-to-play games.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--primary-color);">Opt-In Advertisements</h4>
+                        <p>Some apps offer users the choice to view ads voluntarily in exchange for certain benefits, such as in-app currency, premium features, or rewards. Users have the option to engage with these ads and are not forced to interact with them.</p>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="mobile-game-advertisements-removebg-preview.png" alt="Mobile game advertisements" style="max-width: 400px;">
+                    <div class="image-caption">Mobile game advertisements between gameplay sessions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Harmful Adware Section -->
+    <section id="harmful" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Section 02</div>
+                <h2>Harmful Adware</h2>
+            </div>
+
+            <div class="note">
+                <strong>Warning:</strong> Harmful adware poses significant risks to individuals and organizations, and understanding how to recognize, prevent, and respond to such threats is essential for maintaining online security and privacy.
+            </div>
+            <div class="card warning-card">
+                <h3>Harmful Adware in the Mobile Space</h3>
+                
+                <p>Harmful adware in the mobile space presents significant issues, notably impacting battery life, device performance, and posing risks when embedded within legitimate applications. Such adware often runs background processes that consume considerable system resources, leading to rapid battery drain and a notable decrease in device performance.</p>
+                
+                <div class="image-container">
+                    <img src="Your-Iphone-Has-Been-Hacked.png" alt="Fake iPhone hacked advertisement" style="max-width: 400px;">
+                    <div class="image-caption">A common BOGUS advertisement targeting users who click on unwanted ads or access websites with malicious pop-ups</div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: white; margin-bottom: 1rem;">Key Threats</h4>
+                    <ul style="text-align: left; color: white;">
+                        <li><strong>Performance Impact:</strong> Background processes continuously display ads, track user behavior, or perform intrusive actions without consent</li>
+                        <li><strong>App Infiltration:</strong> Adware embedded within seemingly legitimate applications operates surreptitiously</li>
+                        <li><strong>Privacy Violations:</strong> Collecting sensitive user data without consent or redirecting to malicious websites</li>
+                        <li><strong>Security Bypass:</strong> Infected apps often bypass initial security checks on app stores</li>
+                    </ul>
+                </div>
+                
+                <p style="margin-top: 2rem;"><strong>The impact goes beyond mere annoyance:</strong> It jeopardizes user privacy, compromises device performance, drains battery life, and exposes users to potential security risks, highlighting the necessity for robust security measures, regular app updates, and user vigilance.</p>
+            </div>
+            <div class="card warning-card">
+                <h3>Financial Motivations</h3>
+                
+                <div class="image-container">
+                    <img src="Nigerian Prince Advertisement and Email Scam.jpeg" alt="Nigerian Prince Email scam" style="max-width: 400px;">
+                    <div class="image-caption">A popular email scam from the early days of computing. Thousands are still affected by this. Similar harmful advertisements use the same deceptive tactics.</div>
+                </div>
     <p>
         <font color="white">
         <b>
@@ -466,258 +583,153 @@
             to exploit unsuspecting users.
         </font>
     </p>
-    <h2>
-        <font color="Green">
-            3_Distribution and Infection Methods
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-        <b>
-            How Harmful Adware Spreads and Infects Devices
-        </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Typically, it spreads via software bundles, piggybacking on 
-            seemingly legitimate programs downloaded from untrustworthy 
-            sources or bundled with freeware/shareware. It may also lurk 
-            within seemingly harmless email attachments, enticing links, or 
-            dubious websites. Once inside a system, adware embeds itself, often 
-            discreetly, displaying intrusive advertisements, altering browser 
-            settings, or even tracking user data. Its propagation relies on users 
-            unwittingly granting permissions during installation or engaging with 
-            unsafe online content, emphasizing the importance of cautious browsing 
-            and vigilant software downloads to prevent its insidious infiltration 
-            and subsequent harm to devices and privacy.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-        <b>
-            Common Vectors, Including Software Bundling and Drive-By Downloads
-        </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Adware commonly infiltrates systems through various 
-            vectors, with software bundling and drive-by downloads
-             being prevalent methods. Software bundling involves 
-             packaging adware with seemingly harmless programs 
-             during installation, tricking users into unwittingly 
-             accepting its presence alongside the intended software. Drive-by 
-             downloads, on the other hand, exploit vulnerabilities in 
-             browsers or software to automatically download adware when 
-             users visit compromised websites, often without any user 
-             interaction or consent. These vectors capitalize on users' 
-             unsuspecting behaviors, highlighting the critical need for 
-             robust cybersecurity measures, such as regularly updating 
-             software, using reputable download sources, and employing 
-             reliable antivirus tools (provided by your OS in most cases... 
-             no need for expensive junk that sources its knowledge from the same 
-             repositories!) to mitigate the risk of adware 
-             infiltration.
-        </font>
-    </p>
-    <h1 id="Consumer-Privacy">
-        <font color="limegreen">
-            Adware In The Context of Consumer Privacy
-        </font>
-    </h1>
-    <p>
-        <font color="grey">
-            <b>
-                <i>
-                    Note:
-                </i>
-            </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            <small>
-                The presence of adware within the context of consumer privacy raises 
-                significant concerns and considerations in the digital age. Consumer privacy 
-                is a fundamental right in the digital era, and striking a balance between 
-                targeted advertising and safeguarding personal information remains a delicate 
-                challenge. Adware that is invasive or overly aggressive can breach this balance, 
-                leading to unwanted tracking, data collection, and potential security 
-                vulnerabilities. As the landscape of adware continues to evolve alongside 
-                technological advancements, the protection of consumer privacy remains a paramount 
-                concern.
-            </small>
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            1_Security and Privacy Concerns
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-        <b>
-            Addressing the Potential Security and Privacy Risks Associated With Adware
-        </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Addressing the potential security and privacy risks linked to adware requires a 
-            multifaceted approach focusing on prevention, detection, and mitigation. 
-            Implementing robust antivirus and anti-malware software (provided by most OS) helps detect and 
-            remove adware, bolstering device security. Regular system updates and patches 
-            also patch vulnerabilities, reducing the likelihood of adware exploiting security 
-            loopholes. Educating users about safe browsing practices, such as avoiding suspicious 
-            websites and refraining from downloading software from unverified sources, plays a 
-            crucial role in preventing adware infections. Additionally, stringent 
-            privacy measures, including reviewing and adjusting permissions granted 
-            to applications and regularly auditing installed programs, aid in safeguarding 
-            personal data from adware's intrusive practices. Maintaining a proactive stance 
-            against adware involves a combination of technological defenses and user awareness 
-            to mitigate its potential risks to security and privacy.
-        </font>
-    </p>
-    <p>
-        <font color="white">
-        <b>
-            User Consent and Control
-        </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            User consent and control are fundamental pillars in ensuring a transparent 
-            and empowered digital experience. They encompass granting explicit permission 
-            before applications access personal data or engage in certain functionalities, 
-            emphasizing the user's autonomy and privacy. Respecting user consent involves 
-            providing clear, understandable terms of service and privacy policies, enabling 
-            individuals to make informed choices about the use of their data. Empowering users 
-            with control means offering accessible tools to manage permissions, preferences, 
-            and data access, fostering a sense of ownership and trust in their digital 
-            interactions. Upholding these principles not only aligns with ethical standards 
-            but also builds stronger relationships between users and service providers, 
-            fostering a more privacy-centric and user-centric digital landscape. 
-            <br>
-            <br>
-            <i> 
-                <small>
-            Unfortuneatly, many companies have abondoned this paradigm with systems designed to extrapolate information
-            from its users. Many of the things mentioned above are provided by many digital vendors,
-            but hidden away behind menus or misleading language/double-speak and obfuscation of what I deem
-            to be simple. many faculties of privacy should remain simple, but your information is worth
-            money to some.
-                </small>
-            </i>
-        </font>
-    </p>
-    <h2>
-        <font color="Green">
-            Consumer Education
-        </font>
-    </h2>
-    <p>
-        <font color="white">
-        <b>
-            The Importance of Educating Consumers About Adware and Its Potential Consequences
-        </b>
-        </font>
-    </p>
-    <p>
-        <font color="white">
-            Educating consumers about adware and its potential consequences 
-            is paramount in fortifying their digital defenses and 
-            safeguarding against malicious intrusions. Awareness campaigns 
-            highlighting the deceptive tactics used by adware to infiltrate 
-            devices, compromise privacy, and hinder system performance serve 
-            as crucial tools in empowering individuals to recognize and avoid 
-            these threats. Understanding the implications of adware—ranging 
-            from intrusive advertisements to data breaches—instills a 
-            proactive mindset, encouraging users to practice cautious online 
-            behavior, such as downloading from trusted sources and regularly 
-            updating security software. By imparting knowledge about adware's 
-            risks, consumers can make informed decisions, fortifying their 
-            digital hygiene and contributing to a safer online environment 
-            for themselves and others.
-        </font>
-    </p>
-    <p>
-        <b>
-            <font color="#b465cf">
-                With 💚 Zachary Amith (z8chary)
-            </font>
-        </b>
-    </p>
-    <br>
-    <br>
-    <br>
-    <p id="Sources">
-        <b>
-            <i>
-                    <font color="pink">
-                    Sources Cited (from top to bottom, images first):
-                    </font>
-            </i>
-        </b>
-    </p>
-    <br>
-    <p>
-        <font color="Green">
-            Hand coming out of computer screen -> https://www.aura.com/learn/how-do-hackers-get-into-your-computer
-            <br>
-            <br>
-            Weigh Scale -> https://www.justia.com/lawyers/california/merced
-            <br>
-            <br>
-            Digital Handshake -> https://www.iconfinder.com/icons/2984567/database_digital_handshake_internet_server_technology_icon
-            <br>
-            <br>
-            Firefox Logo -> https://www.iconfinder.com/icons/2984567/database_digital_handshake_internet_server_technology_icon
-            <br>
-            <br>
-            BitTorrent Logo -> https://www.bittorrent.com
-            <br>
-            <br>
-            Skype Logo -> https://www.skype.com/en/
-            <br>
-            <br>
-            FreeWater -> https://www.freewater.io
-            <br>
-            <br>
-            Mobile Advertisements -> https://www.cbr.com/mobile-game-ads-bizarre-misleading/
-            <br>
-            <br>
-            You have been hacked! -> https://discussions.apple.com/thread/251869628?page=2&sortBy=best
-            <br>
-            <br>
-            BT Auto Connect -> Personal
-            <br>
-            <br>
-            Harmless Adware -> https://www.vodafone.com/business/news-and-insights/blog/gigabit-thinking/is-there-really-such-a-thing-as-harmless-malware
-            <br>
-            -> https://www.mcafee.com/blogs/tips-tricks/what-is-adware-a-definitive-guide/
-            <br>
-            -> https://www.investopedia.com/terms/a/adware.asp
-            <br>
-            -> https://consumer.ftc.gov/articles/how-recognize-remove-avoid-malware 
-            <br>
-            <br>
-            Harmful Adware -> https://consumer.ftc.gov/articles/how-recognize-remove-avoid-malware
-            <br>               
-            -> https://www.mcafee.com/blogs/tips-tricks/what-is-adware-a-definitive-guide/
-            <br>              
-            -> https://news.trendmicro.com/2022/07/05/what-is-adware/   
-            <br>
-            -> https://dl.acm.org/doi/10.1016/j.jnca.2016.08.022
-            <br>
-            <br>
-            Adware in the Context of Consumer Privacy -> https://link.springer.com/article/10.1007/s11747-022-00845-y
-            <br>
-            -> https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9982693/
-            <br>
-            -> https://www.nytimes.com/wirecutter/blog/state-of-privacy-laws-in-us/
-        </font>
-    </p>
+                <h3>Distribution and Infection Methods</h3>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: var(--secondary-color);">How Harmful Adware Spreads</h4>
+                        <p>Typically, it spreads via software bundles, piggybacking on seemingly legitimate programs downloaded from untrustworthy sources or bundled with freeware/shareware. It may also lurk within seemingly harmless email attachments, enticing links, or dubious websites.</p>
+                        
+                        <p>Once inside a system, adware embeds itself discreetly, displaying intrusive advertisements, altering browser settings, or tracking user data. Its propagation relies on users unwittingly granting permissions during installation or engaging with unsafe online content.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--secondary-color);">Common Attack Vectors</h4>
+                        <p><strong>Software Bundling:</strong> Packaging adware with seemingly harmless programs during installation, tricking users into unwittingly accepting its presence alongside the intended software.</p>
+                        
+                        <p><strong>Drive-by Downloads:</strong> Exploit vulnerabilities in browsers or software to automatically download adware when users visit compromised websites, often without any user interaction or consent.</p>
+                        
+                        <div class="note" style="margin-top: 1rem;">
+                            <strong>Pro Tip:</strong> Your OS provides robust security tools in most cases—no need for expensive third-party junk that sources its knowledge from the same repositories!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consumer Privacy Section -->
+    <section id="privacy" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Section 03</div>
+                <h2>Adware In The Context of Consumer Privacy</h2>
+            </div>
+
+            <div class="note">
+                <strong>Important:</strong> The presence of adware within the context of consumer privacy raises significant concerns and considerations in the digital age. Consumer privacy is a fundamental right in the digital era, and striking a balance between targeted advertising and safeguarding personal information remains a delicate challenge. Adware that is invasive or overly aggressive can breach this balance, leading to unwanted tracking, data collection, and potential security vulnerabilities.
+            </div>
+            <div class="card">
+                <h3>Security and Privacy Concerns</h3>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: var(--primary-color);">Addressing Security Risks</h4>
+                        <p>Addressing the potential security and privacy risks linked to adware requires a multifaceted approach focusing on prevention, detection, and mitigation. Implementing robust antivirus and anti-malware software (provided by most OS) helps detect and remove adware, bolstering device security.</p>
+                        
+                        <p><strong>Key Protection Strategies:</strong></p>
+                        <ul style="text-align: left;">
+                            <li>Regular system updates and patches</li>
+                            <li>Safe browsing practices</li>
+                            <li>Downloading from verified sources only</li>
+                            <li>Regular auditing of installed programs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: var(--primary-color);">User Consent and Control</h4>
+                        <p>User consent and control are fundamental pillars in ensuring a transparent and empowered digital experience. They encompass granting explicit permission before applications access personal data or engage in certain functionalities, emphasizing the user's autonomy and privacy.</p>
+                        
+                        <div class="note" style="margin-top: 1rem;">
+                            <em><strong>Reality Check:</strong> Unfortunately, many companies have abandoned this paradigm with systems designed to extract information from users. Many privacy faculties are provided by digital vendors, but hidden away behind menus or misleading language. Your information is worth money to some.</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card success-card">
+                <h3>Consumer Education</h3>
+                <h4 style="color: white; margin-bottom: 1rem;">The Importance of Educating Consumers About Adware</h4>
+                
+                <p>Educating consumers about adware and its potential consequences is paramount in fortifying their digital defenses and safeguarding against malicious intrusions. Awareness campaigns highlighting the deceptive tactics used by adware to infiltrate devices, compromise privacy, and hinder system performance serve as crucial tools in empowering individuals to recognize and avoid these threats.</p>
+                
+                <p>Understanding the implications of adware—ranging from intrusive advertisements to data breaches—instills a proactive mindset, encouraging users to practice cautious online behavior, such as downloading from trusted sources and regularly updating security software. By imparting knowledge about adware's risks, consumers can make informed decisions, fortifying their digital hygiene and contributing to a safer online environment.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="card">
+                <p style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 2rem;">
+                    <strong>With 💚 Zachary Amith (z8chary)</strong>
+                </p>
+                
+                <div class="sources" id="sources">
+                    <h3 style="color: var(--primary-color); margin-bottom: 2rem;">Sources Cited</h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div><strong>Images:</strong></div>
+                        <p>Hand coming out of computer screen → <a href="https://www.aura.com/learn/how-do-hackers-get-into-your-computer">aura.com</a></p>
+                        <p>Weigh Scale → <a href="https://www.justia.com/lawyers/california/merced">justia.com</a></p>
+                        <p>Digital Handshake → <a href="https://www.iconfinder.com/icons/2984567/database_digital_handshake_internet_server_technology_icon">iconfinder.com</a></p>
+                        <p>Firefox Logo → <a href="https://www.iconfinder.com/icons/2984567/database_digital_handshake_internet_server_technology_icon">iconfinder.com</a></p>
+                        <p>BitTorrent Logo → <a href="https://www.bittorrent.com">bittorrent.com</a></p>
+                        <p>Skype Logo → <a href="https://www.skype.com/en/">skype.com</a></p>
+                        <p>FreeWater → <a href="https://www.freewater.io">freewater.io</a></p>
+                        <p>Mobile Advertisements → <a href="https://www.cbr.com/mobile-game-ads-bizarre-misleading/">cbr.com</a></p>
+                        <p>"You have been hacked!" → <a href="https://discussions.apple.com/thread/251869628?page=2&sortBy=best">Apple Discussions</a></p>
+                        <p>BT Auto Connect → Personal Screenshot</p>
+                        
+                        <div style="margin-top: 2rem;"><strong>Research Sources:</strong></div>
+                        <p><strong>Harmless Adware:</strong></p>
+                        <p>→ <a href="https://www.vodafone.com/business/news-and-insights/blog/gigabit-thinking/is-there-really-such-a-thing-as-harmless-malware">Vodafone Business Insights</a></p>
+                        <p>→ <a href="https://www.mcafee.com/blogs/tips-tricks/what-is-adware-a-definitive-guide/">McAfee Blog</a></p>
+                        <p>→ <a href="https://www.investopedia.com/terms/a/adware.asp">Investopedia</a></p>
+                        <p>→ <a href="https://consumer.ftc.gov/articles/how-recognize-remove-avoid-malware">FTC Consumer Guide</a></p>
+                        
+                        <p><strong>Harmful Adware:</strong></p>
+                        <p>→ <a href="https://consumer.ftc.gov/articles/how-recognize-remove-avoid-malware">FTC Consumer Guide</a></p>
+                        <p>→ <a href="https://www.mcafee.com/blogs/tips-tricks/what-is-adware-a-definitive-guide/">McAfee Blog</a></p>
+                        <p>→ <a href="https://news.trendmicro.com/2022/07/05/what-is-adware/">Trend Micro</a></p>
+                        <p>→ <a href="https://dl.acm.org/doi/10.1016/j.jnca.2016.08.022">ACM Digital Library</a></p>
+                        
+                        <p><strong>Consumer Privacy:</strong></p>
+                        <p>→ <a href="https://link.springer.com/article/10.1007/s11747-022-00845-y">Springer Link</a></p>
+                        <p>→ <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9982693/">NCBI</a></p>
+                        <p>→ <a href="https://www.nytimes.com/wirecutter/blog/state-of-privacy-laws-in-us/">NY Times Wirecutter</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation to cards as they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
